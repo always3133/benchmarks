@@ -1,0 +1,7 @@
+bin
+obj
+*.o
+benchmark
+*.csharp_run
+*.cpprun
+*.class
