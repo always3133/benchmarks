@@ -29,7 +29,7 @@ int main(int argc, char** argv)
         {
             NBodySystem bodies;
             auto start = std::chrono::system_clock::now();
-            for (int i=0; i< 50000; ++i)
+            for (int i=0; i< 50000000; ++i)
                 bodies.advance(0.01);
             auto end = std::chrono::system_clock::now();
             auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);

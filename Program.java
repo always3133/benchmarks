@@ -65,7 +65,7 @@ public final class Program
     {
         NBodySystem bodies = new NBodySystem();
         long startTime = System.currentTimeMillis();
-        for (int i=0; i< 50000; ++i)
+        for (int i=0; i< 50000000; ++i)
             bodies.advance(0.01);
         long estimatedTime = System.currentTimeMillis() - startTime;
         System.out.printf("Try #%d : 00:00:%s\n", ti, elapsedformatter.format((float)estimatedTime/1000));
@@ -99,7 +99,7 @@ public final class Program
             float maxv = getMaxValue(times);
             float sum = getAccumulate(times) - minv - maxv;
             
-            String content = String.format("Java [N-Body] : 00:00:%s", elapsedformatter.format(sum/(times.length-2)));
+            String content = String.format("Java [N-Body] : 00:00:%s\n", elapsedformatter.format(sum/(times.length-2)));
             WriteFileAppend("averages.txt", content);
         }
         System.out.printf("\n");
@@ -115,7 +115,7 @@ public final class Program
             float maxv = getMaxValue(times);
             float sum = getAccumulate(times) - minv - maxv;
             
-            String content = String.format("Java [S-Norm] : 00:00:%s", elapsedformatter.format(sum/(times.length-2)));
+            String content = String.format("Java [S-Norm] : 00:00:%s\n", elapsedformatter.format(sum/(times.length-2)));
             WriteFileAppend("averages.txt", content);
         }
     }
