@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.Random;
 
 public final class Program 
 {
@@ -68,7 +69,7 @@ public final class Program
         for (int i=0; i< 50000000; ++i)
             bodies.advance(0.01);
         long estimatedTime = System.currentTimeMillis() - startTime;
-        System.out.printf("Try #%d : 00:00:%s\n", ti, elapsedformatter.format((float)estimatedTime/1000));
+        System.out.printf("Try #%d : 00:00:%s, %1.9f\n", ti, elapsedformatter.format((float)estimatedTime/1000), bodies.energy());
         
         return (float)estimatedTime/1000;
     }
@@ -78,7 +79,22 @@ public final class Program
         long startTime = System.currentTimeMillis();
         double r = spectralnorm.spectralnormGame(5500);
         long estimatedTime = System.currentTimeMillis() - startTime;
-        System.out.printf("Try #%d : 00:00:%s\n", ti, elapsedformatter.format((float)estimatedTime/1000));
+        System.out.printf("Try #%d : 00:00:%s, %1.9f\n", ti, elapsedformatter.format((float)estimatedTime/1000), r);
+        
+        return (float)estimatedTime/1000;
+    }
+    
+    static float QuicksortTest(int ti)
+    {
+        int n = 50000000;
+        Random random = new Random();
+        int[] array = new int[n];
+        for (int i = 0; i < n; i++)
+            array[i] = random.nextInt(n);
+        long startTime = System.currentTimeMillis();
+        quicksort.doSort(array, 0, n-1);
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        System.out.printf("Try #%d : 00:00:%s, %d\n", ti, elapsedformatter.format((float)estimatedTime/1000), array[1000]);
         
         return (float)estimatedTime/1000;
     }
@@ -116,6 +132,23 @@ public final class Program
             float sum = getAccumulate(times) - minv - maxv;
             
             String content = String.format("Java [S-Norm] : 00:00:%s\n", elapsedformatter.format(sum/(times.length-2)));
+            WriteFileAppend("averages.txt", content);
+        }
+        System.out.printf("\n");
+        {
+            System.out.println("##### Quicksort #####");
+            int[] t = {1, 2, 3};
+            quicksort.doSort(t, 0, 2);
+            
+            float[] times = new float[10];
+            for (int i = 0; i < 10; i++)
+                times[i] = QuicksortTest(i);
+                
+            float minv = getMinValue(times);
+            float maxv = getMaxValue(times);
+            float sum = getAccumulate(times) - minv - maxv;
+            
+            String content = String.format("Java [Q-Sort] : 00:00:%s\n", elapsedformatter.format(sum/(times.length-2)));
             WriteFileAppend("averages.txt", content);
         }
     }
