@@ -47,7 +47,7 @@ int main(int argc, char** argv)
             
         auto times = WithoutHiLo(times0);
         float sum = std::accumulate(std::begin(times), std::end(times), 0.0);
-        auto average = sum/(times.size()-2);
+        auto average = sum/(times.size());
         
         char buf[100];
         snprintf(buf, sizeof(buf), "C++ [N-Body] : 00:00:%09.6f\n", average);
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
             
         auto times = WithoutHiLo(times0);
         float sum = std::accumulate(std::begin(times), std::end(times), 0.0);
-        auto average = sum/(times.size()-2);
+        auto average = sum/(times.size());
         
         char buf[100];
         snprintf(buf, sizeof(buf), "C++ [S-Norm] : 00:00:%09.6f\n", average);
@@ -105,7 +105,7 @@ int main(int argc, char** argv)
             
         auto times = WithoutHiLo(times0);
         float sum = std::accumulate(std::begin(times), std::end(times), 0.0);
-        auto average = sum/(times.size()-2);
+        auto average = sum/(times.size());
         
         char buf[100];
         snprintf(buf, sizeof(buf), "C++ [Q-Sort] : 00:00:%09.6f\n", average);
