@@ -5,3 +5,4 @@ benchmark
 *.csharp_run
 *.cpprun
 *.class
+averages.txt
