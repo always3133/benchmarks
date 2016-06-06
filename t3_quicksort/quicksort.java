@@ -12,12 +12,21 @@ public class quicksort
 	// 	quickSort(x, low, high);
 	// 	System.out.println(Arrays.toString(x));
 	// }
- 
-	public static void doSort(int[] arr, int low, int high) 
-    {
+	
+	private int[] arr;
+	
+	public static void sort(int[] arr, int low, int high)
+	{
 		if (arr == null || arr.length == 0)
 			return;
+			
+		quicksort q = new quicksort();
+		q.arr = arr;
+		q.doSort(low, high);
+	}
  
+	private void doSort(int low, int high) 
+    {
 		if (low >= high)
 			return;
  
@@ -47,9 +56,9 @@ public class quicksort
  
 		// recursively sort two sub parts
 		if (low < j)
-			doSort(arr, low, j);
+			doSort(low, j);
  
 		if (high > i)
-			doSort(arr, i, high);
+			doSort(i, high);
 	}
 }

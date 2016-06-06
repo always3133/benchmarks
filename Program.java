@@ -92,7 +92,7 @@ public final class Program
         for (int i = 0; i < n; i++)
             array[i] = random.nextInt(n);
         long startTime = System.currentTimeMillis();
-        quicksort.doSort(array, 0, n-1);
+        quicksort.sort(array, 0, n-1);
         long estimatedTime = System.currentTimeMillis() - startTime;
         System.out.printf("Try #%d : 00:00:%s, %d\n", ti, elapsedformatter.format((float)estimatedTime/1000), array[1000]);
         
@@ -138,7 +138,7 @@ public final class Program
         {
             System.out.println("##### Quicksort #####");
             int[] t = {1, 2, 3};
-            quicksort.doSort(t, 0, 2);
+            quicksort.sort(t, 0, 2);
             
             float[] times = new float[10];
             for (int i = 0; i < 10; i++)
